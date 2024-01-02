@@ -1,0 +1,18 @@
+.section {
+  padding: 16px 32px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 24px 0;
+}
+
+.listItem + .listItem {
+  margin-top: 8px;
+}
+
+.link {
+  color: #0000ee;
+  text-decoration: underline;
+}
