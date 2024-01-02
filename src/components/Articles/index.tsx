@@ -1,7 +1,7 @@
 import React, { FormEvent, useRef, useState } from 'react';
 import { ArticleType } from '~/types/article';
-import style from './style.module.css';
 import { getItems } from '~/fetches/qiita';
+import style from './style.module.css';
 
 type Props = {
   articles: ArticleType[];
