@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Articles } from '~/components/Articles';
-import { getItems } from '~/fetches/qiita';
+import { getItems } from '~/repositories/qiita';
 import { ArticleType } from '~/types/article';
 
 type Props = {

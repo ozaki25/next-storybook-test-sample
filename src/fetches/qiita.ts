@@ -1,9 +1,16 @@
 import { ArticleType } from '~/types/article';
 
-const baseUrl = 'https://qiita.com/api/v2';
-
 export const getItems = async ({ username }: { username: string }) => {
-  const res = await fetch(`${baseUrl}/users/${username}/items`);
-  const json: ArticleType[] = await res.json();
-  return json;
+  try {
+    const res = await fetch('/api/qiita/items', {
+      method: 'POST',
+      body: JSON.stringify({ username }),
+    });
+    if (!res.ok) return { articles: [] };
+    const json: { articles: ArticleType[] } = await res.json();
+    return json;
+  } catch (e) {
+    console.log(e);
+    return { articles: [] };
+  }
 };
