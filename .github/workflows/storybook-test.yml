@@ -19,10 +19,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Init Playwright
-        run: pnpm create playwright
       - name: Install Playwright
-        run: pnpm playwright install --with-deps
+        run: npx playwright install --with-deps
       - name: Build Storybook
         run: pnpm build-storybook --quiet
       - name: Serve Storybook and run tests
