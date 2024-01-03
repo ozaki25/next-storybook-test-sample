@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getItems } from '~/repositories/qiita';
+import { getItems } from '~/fetches/server/qiita';
 import { ArticleType } from '~/types/article';
 
 type ResponseProps = {

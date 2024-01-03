@@ -1,6 +1,6 @@
 import React, { FormEvent, useRef, useState } from 'react';
 import { ArticleType } from '~/types/article';
-import { getItems } from '~/fetches/qiita';
+import { getItems } from '~/fetches/client/qiita';
 import style from './style.module.css';
 
 type Props = {
