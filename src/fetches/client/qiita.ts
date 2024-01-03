@@ -1,8 +1,10 @@
 import { ArticleType } from '~/types/article';
 
+const baseUrl = globalThis.location?.origin;
+
 export const getItems = async ({ username }: { username: string }) => {
   try {
-    const res = await fetch('/api/qiita/items', {
+    const res = await fetch(`${baseUrl}/api/qiita/items`, {
       method: 'POST',
       body: JSON.stringify({ username }),
     });
