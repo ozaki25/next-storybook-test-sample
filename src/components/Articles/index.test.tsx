@@ -47,19 +47,38 @@ describe('Articles', () => {
     });
   });
   describe('検索の確認', () => {
-    describe('検索結果が存在する場合', () => {
-      test('見出しが表示されること', async () => {
-        render(<Story3 />);
-        const input = screen.getByLabelText('ユーザ名');
-        const button = screen.getByRole('button', { name: '取得' });
-        await userEvent.type(input, 'ozaki');
-        await fireEvent.click(button);
+    test('検索結果が存在する場合一覧が更新されること', async () => {
+      render(<Story3 />);
+      const input = screen.getByLabelText('ユーザ名');
+      const button = screen.getByRole('button', { name: '取得' });
+      await userEvent.type(input, 'ozaki');
+      await fireEvent.click(button);
 
-        await waitFor(() => {
-          expect(screen.getAllByRole('link', { name: /ozaki/ })).toHaveLength(
-            3,
-          );
-        });
+      await waitFor(() => {
+        expect(screen.getAllByRole('link', { name: /ozaki/ })).toHaveLength(3);
+      });
+    });
+    test('検索結果が存在しない場合一覧が表示されずメッセージが表示されること', async () => {
+      render(<Story4 />);
+      const input = screen.getByLabelText('ユーザ名');
+      const button = screen.getByRole('button', { name: '取得' });
+      await userEvent.type(input, 'ozaki');
+      await fireEvent.click(button);
+
+      await waitFor(() => {
+        expect(screen.queryByRole('link')).not.toBeInTheDocument();
+        expect(screen.getByText('記事がありません')).toBeInTheDocument();
+      });
+    });
+    test('検索エラー場合メッセージが表示されること', async () => {
+      render(<Story5 />);
+      const input = screen.getByLabelText('ユーザ名');
+      const button = screen.getByRole('button', { name: '取得' });
+      await userEvent.type(input, 'ozaki');
+      await fireEvent.click(button);
+
+      await waitFor(() => {
+        expect(screen.getByText('記事がありません')).toBeInTheDocument();
       });
     });
   });
