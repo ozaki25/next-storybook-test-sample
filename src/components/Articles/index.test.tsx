@@ -3,7 +3,7 @@ import { expect, fireEvent, userEvent, waitFor } from '@storybook/test';
 import { afterEach, describe, test } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 
-import * as stories from './stories';
+import * as stories from './Article.stories';
 
 const { Story1, Story2, Story3, Story4, Story5 } = composeStories(stories);
 
