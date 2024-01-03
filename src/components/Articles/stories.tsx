@@ -17,6 +17,11 @@ const meta = {
       { id: '3', title: 'タイトル3', url: 'https://example.com' },
     ],
   },
+  parameters: {
+    msw: {
+      handlers: [getItemsSuccess()],
+    },
+  },
 } satisfies Meta<typeof Articles>;
 
 export default meta;
