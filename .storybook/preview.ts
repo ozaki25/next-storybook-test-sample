@@ -2,7 +2,9 @@ import type { Preview } from '@storybook/react';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import '../src/styles/globals.css';
 
-initialize();
+initialize({
+  onUnhandledRequest: 'bypass',
+});
 
 const preview: Preview = {
   parameters: {

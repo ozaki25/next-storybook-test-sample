@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Articles } from '.';
+import {
+  getItemsEmpty,
+  getItemsError,
+  getItemsSuccess,
+} from '~/mocks/client/handlers';
 
 const meta = {
   title: 'Articles',
@@ -17,6 +22,38 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Story1: Story = {};
+export const Story1: Story = {
+  name: '記事一覧がある場合',
+};
 
-export const Story2: Story = { args: { articles: [] } };
+export const Story2: Story = {
+  name: '記事がない場合',
+  args: { articles: [] },
+};
+
+export const Story3: Story = {
+  name: '検索結果を取得できる場合',
+  parameters: {
+    msw: {
+      handlers: [getItemsSuccess()],
+    },
+  },
+};
+
+export const Story4: Story = {
+  name: '検索結果が0件の場合',
+  parameters: {
+    msw: {
+      handlers: [getItemsEmpty()],
+    },
+  },
+};
+
+export const Story5: Story = {
+  name: '検索エラーの場合',
+  parameters: {
+    msw: {
+      handlers: [getItemsError()],
+    },
+  },
+};
