@@ -4,6 +4,9 @@ import '../src/styles/globals.css';
 
 initialize({
   onUnhandledRequest: 'bypass',
+  serviceWorker: {
+    url: './mockServiceWorker.js',
+  },
 });
 
 const preview: Preview = {
