@@ -8,7 +8,7 @@ import {
 } from '~/mocks/client/handlers';
 
 const meta = {
-  title: 'Articles',
+  title: 'Story/Articles',
   component: Articles,
   args: {
     articles: [
