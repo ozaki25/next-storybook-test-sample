@@ -9,6 +9,7 @@ type Props = {
 
 export function Articles({ articles: defaultArticles }: Props) {
   const [articles, setArticles] = useState(defaultArticles);
+  const [hasError, setHasError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: FormEvent) => {
@@ -16,7 +17,8 @@ export function Articles({ articles: defaultArticles }: Props) {
     const username = inputRef.current?.value;
     if (!username) return;
 
-    const { articles } = await getItems({ username });
+    const { articles, hasError } = await getItems({ username });
+    setHasError(!!hasError);
     setArticles(articles);
   };
 
@@ -30,7 +32,9 @@ export function Articles({ articles: defaultArticles }: Props) {
         <input id="username" name="username" ref={inputRef} />
         <button>取得</button>
       </form>
-      {articles.length === 0 ? (
+      {hasError ? (
+        <p>エラーが発生しました</p>
+      ) : articles.length === 0 ? (
         <p>記事がありません</p>
       ) : (
         <ul>

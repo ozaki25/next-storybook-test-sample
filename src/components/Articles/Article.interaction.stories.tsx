@@ -87,7 +87,7 @@ export const Story5: Story = {
     await userEvent.click(button);
 
     await waitFor(() => {
-      expect(canvas.getByText('記事がありません')).toBeInTheDocument();
+      expect(canvas.getByText('エラーが発生しました')).toBeInTheDocument();
     });
   },
   tags: ['play-test'],
