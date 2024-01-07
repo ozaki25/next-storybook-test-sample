@@ -78,7 +78,7 @@ describe('Articles', () => {
       await fireEvent.click(button);
 
       await waitFor(() => {
-        expect(screen.getByText('記事がありません')).toBeInTheDocument();
+        expect(screen.getByText('エラーが発生しました')).toBeInTheDocument();
       });
     });
   });
